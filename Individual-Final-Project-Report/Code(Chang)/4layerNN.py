@@ -54,14 +54,14 @@ for i in range(10000):
 
     if i % 100 == 0:
         a, c = sess.run([accuracy, cross_entropy],
-                        feed_dict={X: batch_X, Y_: batch_Y, pkeep: 1.0, step: i})
+                        feed_dict={X: batch_X, Y_: batch_Y})
         #print(str(i) + ": accuracy:" + str(a) + " loss: " + str(c))
         aa_train.append((a))
         cc_train.append((c))
         ii_train.append((i))
     if i % 100 == 0:
         a, c = sess.run([accuracy, cross_entropy],
-                        feed_dict={X: mnist.test.images, Y_: mnist.test.labels, pkeep: 1.0})
+                        feed_dict={X: mnist.test.images, Y_: mnist.test.labels})
         print(str(i) + ": ********* epoch " + str(
             i * 100 // mnist.train.images.shape[0] + 1) + " ********* test accuracy:" + str(a) + " test loss: " + str(
             c))
@@ -80,4 +80,3 @@ plt.plot(ii_train, aa_train)
 plt.title('Accuracy')
 plt.ylabel('accuracy')
 plt.show()
-print(allweights)
